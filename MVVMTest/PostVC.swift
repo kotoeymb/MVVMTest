@@ -25,6 +25,14 @@ class PostVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (postSettingData) != nil {
+            print("count of ->  \(postSettingData.count)")
+            self.postSettingData = PostData.getSettings()
+            self.tbView.reloadData()
+        }
+    }
    
     func getCustomiseSettings(){
         
@@ -61,16 +69,19 @@ extension PostVC : UITableViewDelegate,UITableViewDataSource{
         
         let cell:GetPostDataTableViewCell = tbView.dequeueReusableCell(withIdentifier: "GetDataCell") as! GetPostDataTableViewCell
         
-        let dataPost = postSettingData[indexPath.row]
+        // let dataPost = postSettingData[indexPath.row]
 
-        cell.lblBody.text = dataPost["body"] as? String
-        cell.lblTitle.text = dataPost["title"] as? String
+        cell.lblBody.text = postSettingData[indexPath.row].body //  dataPost["body"] as? String
+        cell.lblTitle.text = postSettingData[indexPath.row].title // dataPost["title"] as? String
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell:GetPostDataTableViewCell = tableView.cellForRow(at: indexPath) as! GetPostDataTableViewCell
+        let dataPost = postSettingData[indexPath.row]
+        postData = dataPost
+        print("for delete\(postData)")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewVC") as? DetailViewVC{
             if let tipTitle = cell.lblTitle.text{
@@ -79,6 +90,8 @@ extension PostVC : UITableViewDelegate,UITableViewDataSource{
             if let tipBody = cell.lblBody.text{
                 vc.bodyString = tipBody
             }
+            vc.toDeleteData = dataPost
+//            vc.deleteid = [indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
             
 //          present(vc, animated: true, completion: nil)

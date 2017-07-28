@@ -11,10 +11,10 @@ import ObjectMapper
 import SwiftyUserDefaults
 
 class PostData: Object, Mappable{
-    var userId = "" 
-    var appId = ""
-    var title = ""
-    var body = ""
+    dynamic var userId = ""
+    dynamic var appId = ""
+    dynamic var title = ""
+    dynamic var body = ""
     
     required convenience init?(map: Map){
        self.init()
@@ -49,6 +49,9 @@ class PostData: Object, Mappable{
         let realm = try! Realm()
         return realm.objects(PostData.self).first
     }
+    static func getDataByID(cid:String) -> PostData? {
+        return PostData.getSettings()?.filter("id = '\(cid)'").first
+    }
 }
 class PostDataResponse : NSObject,Mappable{
     
@@ -57,13 +60,8 @@ class PostDataResponse : NSObject,Mappable{
         
 }
     
-//    override init(){
-//        super.init()
-//    }
-    
     func mapping(map: Map) {
         postDataResp <- map //["PostData"]
-
     }
 }
 

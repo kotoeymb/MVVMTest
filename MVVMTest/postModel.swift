@@ -23,11 +23,9 @@ class postModel{
     func getCustomiseSettings(success: @escaping (Void) -> Void, failure: @escaping (_ errorMessage: String) -> Void){
         
             APIManager.sharedInstance.getMasterData(completed: { (apiResponseHandler, error) in
-//                if !apiResponseHandler.isSuccess() {
             
                     if let response = Mapper<PostData>().mapArray(JSONObject: apiResponseHandler.jsonObject) {
                        print(response)
-//                        if let data = response.title{
                         
                             let realm = try! Realm()
                             

@@ -166,15 +166,6 @@ class APIManager {
     
     func getMasterData(completed: @escaping completionHandler) {
         sendJSONRequest(method: .get, path: Router.GetPostData(), parameters: nil) { (apiResponseHandler, error) -> Void in
-
-//            if let response = Mapper<PostData>().mapArray(JSONObject: apiResponseHandler.jsonObject){
-//            print("rep\(response)")
-//                let realm = try! Realm()
-//                try! realm.write {
-//                    realm.delete(realm.objects(PostData.self)) // clear old one
-//                    realm.add(response) // add new one
-//                }
-//            }
             completed(apiResponseHandler, error)
         }
     }

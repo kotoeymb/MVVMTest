@@ -235,6 +235,9 @@
                                         <color key="value" red="0.21503363719999999" green="0.26120334200000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteClicked:" destination="TD4-ye-X3E" eventType="touchUpInside" id="Dc5-yp-zBQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
