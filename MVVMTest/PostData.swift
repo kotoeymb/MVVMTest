@@ -19,37 +19,32 @@ class PostData: Object, Mappable{
     required convenience init?(map: Map){
        self.init()
     }
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
     
     func mapping(map: Map) {
-        if map.mappingType == .toJSON {
-            userId >>> map["userId"]
-            appId >>> map["id"]
-            title >>> map["title"]
-            body >>> map["body"]
-        }else{
+//        if map.mappingType == .toJSON {
+//            userId >>> map["userId"]
+//            appId >>> map["id"]
+//            title >>> map["title"]
+//            body >>> map["body"]
+//        }else{
+//            userId <- (map["userId"], TransformOf<Int, String>(fromJSON: { Int($0!) }, toJSON: { $0.map { String($0) } }))
+//            appId <- (map["id"], TransformOf<Int, String>(fromJSON: { Int($0!) }, toJSON: { $0.map { String($0) } }))
             userId <- map["userId"]
             appId <- map["id"]
+
             title <- map["title"]
             body <- map["body"]
-        }
     }
     static func getSettings() -> Results<PostData>?{
         let realm = try! Realm()
         return realm.objects(PostData.self)
     }
 
-    static func postSettings() -> PostData?{
+    static func postSettings() -> PostData{
         let realm = try! Realm()
-        return realm.objects(PostData.self).first
+        return realm.objects(PostData.self).first!
     }
     
-//    static func getScheduleObjByID(scheduleID : Int) -> PostData? {
-//        let realm = try! Realm()
-//        return realm.objects(UpdatedSchedulesList.self).filter(("ScheduleID = \(scheduleID)")).first
-//    }
     static func getUpdatedpost() -> PostData? {
         let realm = try! Realm()
         return realm.objects(PostData.self).first
@@ -58,12 +53,9 @@ class PostData: Object, Mappable{
 class PostDataResponse : NSObject,Mappable{
     
     dynamic var postDataResp : PostData?
-    
-//    dynamic var postresp:[PostData] = [PostData]()
-    
     required init?(map: Map){
         
-    }
+}
     
 //    override init(){
 //        super.init()

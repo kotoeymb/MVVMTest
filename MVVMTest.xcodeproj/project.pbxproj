@@ -19,6 +19,8 @@
 		B40DC18D1F2871A700339FD3 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40DC18C1F2871A700339FD3 /* PostVC.swift */; };
 		B4111B821F2890E5000A428A /* APIManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4111B811F2890E5000A428A /* APIManger.swift */; };
 		B4605A271F29F42D0023BF3F /* postModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A261F29F42D0023BF3F /* postModel.swift */; };
+		B4626AC81F2B22F900787788 /* DetailViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4626AC71F2B22F900787788 /* DetailViewVC.swift */; };
+		B4626ACA1F2B306400787788 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4626AC91F2B306400787788 /* CornerRadius.swift */; };
 		C7013F8382713B05A759DDFA /* Pods_MVVMTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7309F2772D734A540CF36315 /* Pods_MVVMTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		B40DC18C1F2871A700339FD3 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		B4111B811F2890E5000A428A /* APIManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManger.swift; sourceTree = "<group>"; };
 		B4605A261F29F42D0023BF3F /* postModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postModel.swift; sourceTree = "<group>"; };
+		B4626AC71F2B22F900787788 /* DetailViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewVC.swift; sourceTree = "<group>"; };
+		B4626AC91F2B306400787788 /* CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		D66A5076BAED3F2918053B4F /* Pods-MVVMTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMTest/Pods-MVVMTest.release.xcconfig"; sourceTree = "<group>"; };
 		D6850A72694DC479F1FB13D4 /* Pods-MVVMTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMTest/Pods-MVVMTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,36 +87,37 @@
 		B40DC16D1F28711D00339FD3 /* MVVMTest */ = {
 			isa = PBXGroup;
 			children = (
-				B41B0CD91F287E2A008830AD /* Utilities */,
-				B41B0CDA1F287E31008830AD /* Data */,
 				B40DC16E1F28711D00339FD3 /* AppDelegate.swift */,
-				B40DC1701F28711D00339FD3 /* ViewController.swift */,
-				B4111B811F2890E5000A428A /* APIManger.swift */,
-				B40DC18F1F2871C800339FD3 /* TableViewCell */,
-				B40DC18E1F2871C000339FD3 /* Controller */,
+				B40DC18E1F2871C000339FD3 /* ViewController */,
+				B4626AC61F2B0BA700787788 /* ViewModel */,
+				B40DC18F1F2871C800339FD3 /* Cell */,
+				B41B0CDA1F287E31008830AD /* Data */,
+				B4626ACB1F2B30AC00787788 /* APIManager */,
+				B41B0CD91F287E2A008830AD /* Utilities */,
 				B40DC1721F28711D00339FD3 /* Main.storyboard */,
 				B40DC1751F28711D00339FD3 /* Assets.xcassets */,
 				B40DC1771F28711D00339FD3 /* LaunchScreen.storyboard */,
 				B40DC17A1F28711D00339FD3 /* Info.plist */,
-				B4605A261F29F42D0023BF3F /* postModel.swift */,
 			);
 			path = MVVMTest;
 			sourceTree = "<group>";
 		};
-		B40DC18E1F2871C000339FD3 /* Controller */ = {
+		B40DC18E1F2871C000339FD3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B40DC1701F28711D00339FD3 /* ViewController.swift */,
 				B40DC18C1F2871A700339FD3 /* PostVC.swift */,
+				B4626AC71F2B22F900787788 /* DetailViewVC.swift */,
 			);
-			name = Controller;
+			name = ViewController;
 			sourceTree = "<group>";
 		};
-		B40DC18F1F2871C800339FD3 /* TableViewCell */ = {
+		B40DC18F1F2871C800339FD3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				B40DC18A1F2871A000339FD3 /* GetPostDataTableViewCell.swift */,
 			);
-			name = TableViewCell;
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		B41B0CD91F287E2A008830AD /* Utilities */ = {
@@ -120,6 +125,7 @@
 			children = (
 				B40DC1841F28718400339FD3 /* APIUtilities.swift */,
 				B40DC1851F28718400339FD3 /* Constants.swift */,
+				B4626AC91F2B306400787788 /* CornerRadius.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -130,6 +136,22 @@
 				B40DC1881F28719300339FD3 /* PostData.swift */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		B4626AC61F2B0BA700787788 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B4605A261F29F42D0023BF3F /* postModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		B4626ACB1F2B30AC00787788 /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				B4111B811F2890E5000A428A /* APIManger.swift */,
+			);
+			name = APIManager;
 			sourceTree = "<group>";
 		};
 		CD0985C20888CFB6AE465E78 /* Pods */ = {
@@ -267,9 +289,11 @@
 			files = (
 				B40DC1891F28719300339FD3 /* PostData.swift in Sources */,
 				B40DC1711F28711D00339FD3 /* ViewController.swift in Sources */,
+				B4626AC81F2B22F900787788 /* DetailViewVC.swift in Sources */,
 				B40DC18B1F2871A000339FD3 /* GetPostDataTableViewCell.swift in Sources */,
 				B40DC16F1F28711D00339FD3 /* AppDelegate.swift in Sources */,
 				B4605A271F29F42D0023BF3F /* postModel.swift in Sources */,
+				B4626ACA1F2B306400787788 /* CornerRadius.swift in Sources */,
 				B40DC18D1F2871A700339FD3 /* PostVC.swift in Sources */,
 				B40DC1861F28718400339FD3 /* APIUtilities.swift in Sources */,
 				B4111B821F2890E5000A428A /* APIManger.swift in Sources */,

@@ -19,32 +19,26 @@ class PostVC: UIViewController {
     @IBOutlet weak var tbView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.getAPIManger()
-//       self.postSettingData = PostData.getSettings()
-// APIManager.sharedInstance.getMasterData(data: data, completed: { (apiResponseHandler, error) in
-        getCustomiseSettings() 
+        getCustomiseSettings()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
    
-    
     func getCustomiseSettings(){
         
         viewModel.getCustomiseSettings(success: { _ in
             
             self.postSettingData = PostData.getSettings()
-            self.postData = PostData.postSettings()
-            print("\(self.postData)")
             self.tbView.reloadData()
-//            self.savePostObj()
-            
         
         }) { (errorMessage) in
             
         }
+    }
+    @IBAction func buttonClicked(_ sender: Any) {
+        
     }
 
 }
@@ -58,7 +52,7 @@ extension PostVC : UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->CGFloat
     {
-        return 120
+        return 170
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -68,36 +62,28 @@ extension PostVC : UITableViewDelegate,UITableViewDataSource{
         let cell:GetPostDataTableViewCell = tbView.dequeueReusableCell(withIdentifier: "GetDataCell") as! GetPostDataTableViewCell
         
         let dataPost = postSettingData[indexPath.row]
-        print("asdfaaf\(postSettingData)")
-        self.postData = dataPost
-//        cell.lblTitle.text = postData.debugDescription
-        cell.lblBody.text = dataPost.description
-        print("\(dataPost.title)")
-        print("\(dataPost.body)")
+
+        cell.lblBody.text = dataPost["body"] as? String
+        cell.lblTitle.text = dataPost["title"] as? String
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell:GetPostDataTableViewCell = tableView.cellForRow(at: indexPath) as! GetPostDataTableViewCell
-        //        label.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
-        //
-        //        label.font = UIFont.boldSystemFontOfSize(16.0)
-        if (indexPath.row == 0)
-        {
-            //            cell.lblLanguage.font = UIFont.boldFont(ofSize: 16.0)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewVC") as? DetailViewVC{
+            if let tipTitle = cell.lblTitle.text{
+                vc.titleString = tipTitle
+            }
+            if let tipBody = cell.lblBody.text{
+                vc.bodyString = tipBody
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+//          present(vc, animated: true, completion: nil)
+
         }
-        //        cell.lblLanguage.font = UIFont.boldSystemFont(ofSize: 16.0)
-        //        let weight = (indexPath.row % 2 == 0) ? UIFontWeightBold : UIFontWeightRegular
-        //        let font = UIFont.systemFont(ofSize: 13, weight: weight)
-        //        cell.productName.font = font
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell:GetPostDataTableViewCell = tableView.cellForRow(at: indexPath) as! GetPostDataTableViewCell
-        // tableView.reloadData()
-        if (indexPath.row == 0)
-        {
-        }
-    }
 }
